@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050914">
+  <title>JARVIS IQ | Learn & Win</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="logo">J</span>
+    <div>
+      <h2>JARVIS <span>IQ</span></h2>
+      <small>STUDY • PLAY • WIN</small>
+    </div>
+  </div>
+  <div class="stats">
+    <span>🔥 <b id="streak">1</b></span>
+    <span>⚡ <b id="xp">0</b> XP</span>
+  </div>
+</header>
+
+<main>
+  <section class="welcome">
+    <p class="tag">YOUR LEARNING JOURNEY STARTS HERE</p>
+    <h1>WELCOME BACK,<br><span>STUDENT!</span></h1>
+    <p>Study Less Boring. Learn More. Win Together.</p>
+  </section>
+
+  <section class="panel">
+    <h2>🎯 Choose Your Learning Path</h2>
+
+    <label>Class</label>
+    <select id="classSelect">
+      <option value="">Select Class</option>
+      <option>6</option><option>7</option><option>8</option>
+      <option>9</option><option>10</option><option>11</option>
+      <option>12</option>
+    </select>
+
+    <label>Subject</label>
+    <select id="subjectSelect">
+      <option value="">Select Subject</option>
+      <option>Mathematics</option>
+      <option>Science</option>
+      <option>English</option>
+      <option>Social Science</option>
+      <option>Hindi</option>
+    </select>
+
+    <label>Difficulty</label>
+    <select id="difficulty">
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
+      <option>VVI</option>
+    </select>
+
+    <button class="primary" onclick="startQuiz()">START LEARNING →</button>
+  </section>
+
+  <section class="quiz panel" id="quiz" hidden>
+    <div class="quiz-top">
+      <span id="questionNumber">Question 1</span>
+      <span class="timer">⏱ <b id="timer">30</b>s</span>
+    </div>
+
+    <div class="progress">
+      <div id="progressBar"></div>
+    </div>
+
+    <p class="tag">CHALLENGE YOUR BRAIN</p>
+    <h2 id="question">Question appears here</h2>
+
+    <div id="options"></div>
+
+    <div class="actions">
+      <button class="secondary" onclick="showHint()">💡 Hint</button>
+      <button class="secondary" onclick="explain()">📖 Samjhao</button>
+    </div>
+
+    <p id="feedback"></p>
+    <button class="primary" id="nextBtn" onclick="nextQuestion()" hidden>
+      NEXT QUESTION →
+    </button>
+  </section>
+
+  <section class="panel">
+    <h2>🏆 Your Progress</h2>
+    <div class="progress-cards">
+      <div><strong id="total">0</strong><small>Questions</small></div>
+      <div><strong id="correct">0</strong><small>Correct</small></div>
+      <div><strong id="accuracy">0%</strong><small>Accuracy</small></div>
+    </div>
+  </section>
+
+  <section class="panel features">
+    <h2>Explore JARVIS IQ</h2>
+    <div class="feature-grid">
+      <div>⚔️<b>Battle Mode</b><small>Coming Soon</small></div>
+      <div>🏆<b>Leaderboard</b><small>Coming Soon</small></div>
+      <div>👤<b>My Profile</b><small>Coming Soon</small></div>
+      <div>📚<b>Study Mode</b><small>Coming Soon</small></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <h3>PREM X JARVIS</h3>
+  <p>Founder & Developer: Prem Patel</p>
+  <p>Made with ❤️ in India</p>
+  <a href="mailto:premkumar2008pp@gmail.com">
+    Contact Developer
+  </a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
