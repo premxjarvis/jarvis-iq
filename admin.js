@@ -5,7 +5,7 @@
 const SUPABASE_URL = "https://ftbtsnylhyaskftmqtre.supabase.co";
 
 // अपनी पूरी Publishable Key यहाँ डालना।
-const SUPABASE_KEY = "PASTE_YOUR_SB_PUBLISHABLE_KEY_HERE";
+const SUPABASE_KEY = "sb_publishable_D__I3-qiKwsGz4jJHLVPpQ_m75FM9MJ";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
