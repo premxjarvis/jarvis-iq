@@ -15,6 +15,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding: 17px;
   border-bottom: 1px solid #142b48;
   background: #080f1d;
@@ -38,7 +39,8 @@ header {
   box-shadow: 0 0 18px #087dff;
 }
 
-.brand h2 span, .welcome span {
+.brand h2 span,
+.welcome span {
   color: #1594ff;
 }
 
@@ -206,13 +208,15 @@ button {
   line-height: 1.5;
 }
 
-.progress-cards, .feature-grid {
+.progress-cards,
+.feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
-.progress-cards div, .feature-grid div {
+.progress-cards div,
+.feature-grid div {
   background: #101f33;
   padding: 16px 8px;
   text-align: center;
@@ -226,7 +230,8 @@ button {
   font-size: 22px;
 }
 
-.progress-cards small, .feature-grid small {
+.progress-cards small,
+.feature-grid small {
   display: block;
   color: #8ba6c2;
   margin-top: 7px;
@@ -257,17 +262,78 @@ footer a {
   color: #20aaff;
 }
 
+/* ADMIN BUTTON */
+
+.admin-btn {
+  background: linear-gradient(135deg, #087dff, #00b8ff);
+  color: white;
+  padding: 10px 13px;
+  border-radius: 10px;
+  font-size: 12px;
+  box-shadow: 0 0 15px #087dff55;
+  white-space: nowrap;
+}
+
+/* ADMIN LOGIN */
+
+.admin-login {
+  max-width: 450px;
+  margin: 25px auto;
+  border-color: #087dff;
+  box-shadow: 0 0 25px #087dff22;
+}
+
+.admin-login input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: #07101e;
+  border: 1px solid #25496d;
+  border-radius: 10px;
+  color: white;
+  outline: none;
+}
+
+.admin-login input:focus {
+  border-color: #1594ff;
+  box-shadow: 0 0 10px #087dff55;
+}
+
+.admin-login .secondary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#adminMessage {
+  margin-top: 15px;
+  color: #30c4ff;
+  font-size: 13px;
+}
+
 [hidden] {
   display: none !important;
 }
 
-@media(max-width: 400px) {
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 500px) {
+  header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .stats {
     gap: 7px;
     font-size: 11px;
   }
 
+  .admin-btn {
+    padding: 9px 11px;
+  }
+}
+
+@media(max-width: 400px) {
   .panel {
     padding: 17px;
   }
-}
+  }
