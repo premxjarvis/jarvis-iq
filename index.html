@@ -1,194 +1,390 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#050914">
   <title>JARVIS IQ | Learn & Win</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link rel="stylesheet" href="style.css">  <style>
+    [hidden] { display: none !important; }
 
-<body>
+    .admin-dashboard {
+      width: min(1100px, 94%);
+      margin: 25px auto;
+      padding: 22px;
+      background: #080f20;
+      border: 1px solid #087dff;
+      border-radius: 18px;
+      color: #eaf4ff;
+    }
 
-<header>
+    .dashboard-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .dashboard-heading h2 { color: #168cff; }
+
+    .admin-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .admin-nav button, .logout-btn {
+      padding: 13px 10px;
+      background: #101d34;
+      color: #eaf4ff;
+      border: 1px solid #087dff;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .admin-nav button.active,
+    .admin-nav button:hover {
+      background: #087dff;
+      color: white;
+    }
+
+    .dashboard-content {
+      padding: 18px;
+      background: #0b1629;
+      border: 1px solid #19375c;
+      border-radius: 12px;
+      min-height: 180px;
+      overflow-x: auto;
+    }
+
+    .dashboard-content h3 {
+      color: #168cff;
+      margin-bottom: 15px;
+    }
+
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .dashboard-card {
+      padding: 18px;
+      background: #101f37;
+      border: 1px solid #19375c;
+      border-radius: 12px;
+    }
+
+    .dashboard-card strong {
+      display: block;
+      font-size: 25px;
+      color: #168cff;
+    }
+
+    .dashboard-card small { color: #a8bfdc; }
+
+    .dashboard-content input,
+    .dashboard-content select,
+    .dashboard-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 14px;
+      background: #050914;
+      color: white;
+      border: 1px solid #24466e;
+      border-radius: 8px;
+    }
+
+    .dashboard-content table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+
+    .dashboard-content th,
+    .dashboard-content td {
+      padding: 12px;
+      border-bottom: 1px solid #19375c;
+      text-align: left;
+    }
+
+    .dashboard-content th { color: #168cff; }
+
+    .dashboard-note {
+      color: #a8bfdc;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .logout-btn {
+      background: #35121c;
+      border-color: #ff365e;
+    }
+
+    .admin-login {
+      width: min(450px, 92%);
+      margin: 25px auto;
+    }
+
+    @media(max-width: 600px) {
+      .admin-dashboard { padding: 14px; }
+      .dashboard-content { padding: 12px; }
+    }
+  </style></head><body><header>
   <div class="brand">
     <span class="logo">J</span>
     <div>
       <h2>JARVIS <span>IQ</span></h2>
       <small>STUDY • PLAY • WIN</small>
     </div>
-  </div>
-
-  <div class="stats">
+  </div>  <div class="stats">
     <span>🔥 <b id="streak">1</b></span>
     <span>⚡ <b id="xp">0</b> XP</span>
-  </div>
+  </div><button class="admin-btn"
+onclick="document.getElementById('adminLogin').hidden = false">
+🔐 ADMIN
+</button>
 
-  <button class="admin-btn"
-    onclick="document.getElementById('adminLogin').hidden = false">
-    🔐 ADMIN
-  </button>
-</header>
-
-<main>
-
-  <section class="welcome">
+</header><main id="studentArea">  <section class="welcome">
     <p class="tag">YOUR LEARNING JOURNEY STARTS HERE</p>
     <h1>WELCOME BACK,<br><span>STUDENT!</span></h1>
     <p>Study Less Boring. Learn More. Win Together.</p>
-  </section>
+  </section>  <section class="panel">
+    <h2>🎯 Choose Your Learning Path</h2><label>Class</label>
+<select id="classSelect">
+  <option value="">Select Class</option>
+  <option>6</option>
+  <option>7</option>
+  <option>8</option>
+  <option>9</option>
+  <option>10</option>
+  <option>11</option>
+  <option>12</option>
+</select>
 
-  <section class="panel">
-    <h2>🎯 Choose Your Learning Path</h2>
+<label>Subject</label>
+<select id="subjectSelect">
+  <option value="">Select Subject</option>
+  <option>Mathematics</option>
+  <option>Science</option>
+  <option>English</option>
+  <option>Social Science</option>
+  <option>Hindi</option>
+</select>
 
-    <label>Class</label>
-    <select id="classSelect">
-      <option value="">Select Class</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-      <option>9</option>
-      <option>10</option>
-      <option>11</option>
-      <option>12</option>
-    </select>
+<label>Difficulty</label>
+<select id="difficulty">
+  <option>Easy</option>
+  <option>Medium</option>
+  <option>Hard</option>
+  <option>VVI</option>
+</select>
 
-    <label>Subject</label>
-    <select id="subjectSelect">
-      <option value="">Select Subject</option>
-      <option>Mathematics</option>
-      <option>Science</option>
-      <option>English</option>
-      <option>Social Science</option>
-      <option>Hindi</option>
-    </select>
+<button class="primary" onclick="startQuiz()">
+  START LEARNING →
+</button>
 
-    <label>Difficulty</label>
-    <select id="difficulty">
-      <option>Easy</option>
-      <option>Medium</option>
-      <option>Hard</option>
-      <option>VVI</option>
-    </select>
-
-    <button class="primary" onclick="startQuiz()">
-      START LEARNING →
-    </button>
-  </section>
-
-  <section class="quiz panel" id="quiz" hidden>
-
+  </section>  <section class="quiz panel" id="quiz" hidden>
     <div class="quiz-top">
       <span id="questionNumber">Question 1</span>
       <span class="timer">⏱ <b id="timer">30</b>s</span>
-    </div>
+    </div><div class="progress">
+  <div id="progressBar"></div>
+</div>
 
-    <div class="progress">
-      <div id="progressBar"></div>
-    </div>
+<p class="tag">CHALLENGE YOUR BRAIN</p>
+<h2 id="question">Question appears here</h2>
+<div id="options"></div>
 
-    <p class="tag">CHALLENGE YOUR BRAIN</p>
-    <h2 id="question">Question appears here</h2>
+<div class="actions">
+  <button class="secondary" onclick="showHint()">💡 Hint</button>
+  <button class="secondary" onclick="explain()">📖 Samjhao</button>
+</div>
 
-    <div id="options"></div>
+<p id="feedback"></p>
 
-    <div class="actions">
-      <button class="secondary" onclick="showHint()">💡 Hint</button>
-      <button class="secondary" onclick="explain()">📖 Samjhao</button>
-    </div>
+<button class="primary" id="nextBtn"
+  onclick="nextQuestion()" hidden>
+  NEXT QUESTION →
+</button>
 
-    <p id="feedback"></p>
+  </section>  <section class="panel">
+    <h2>🏆 Your Progress</h2><div class="progress-cards">
+  <div>
+    <strong id="total">0</strong>
+    <small>Questions</small>
+  </div>
+  <div>
+    <strong id="correct">0</strong>
+    <small>Correct</small>
+  </div>
+  <div>
+    <strong id="accuracy">0%</strong>
+    <small>Accuracy</small>
+  </div>
+</div>
 
-    <button class="primary" id="nextBtn"
-      onclick="nextQuestion()" hidden>
-      NEXT QUESTION →
-    </button>
+  </section>  <section class="panel features">
+    <h2>Explore JARVIS IQ</h2><div class="feature-grid">
+  <div>⚔️<b>Battle Mode</b><small>Coming Soon</small></div>
+  <div>🏆<b>Leaderboard</b><small>Coming Soon</small></div>
+  <div>👤<b>My Profile</b><small>Coming Soon</small></div>
+  <div>📚<b>Study Mode</b><small>Coming Soon</small></div>
+</div>
 
-  </section>
+  </section></main><!-- ADMIN LOGIN --><section class="panel admin-login" id="adminLogin" hidden>  <h2>🔐 JARVIS IQ ADMIN LOGIN</h2><label>Admin Email</label>
+<input type="email" id="adminEmail"
+placeholder="Enter admin email" autocomplete="username">
 
-  <section class="panel">
-    <h2>🏆 Your Progress</h2>
-
-    <div class="progress-cards">
-      <div>
-        <strong id="total">0</strong>
-        <small>Questions</small>
-      </div>
-
-      <div>
-        <strong id="correct">0</strong>
-        <small>Correct</small>
-      </div>
-
-      <div>
-        <strong id="accuracy">0%</strong>
-        <small>Accuracy</small>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel features">
-    <h2>Explore JARVIS IQ</h2>
-
-    <div class="feature-grid">
-      <div>⚔️<b>Battle Mode</b><small>Coming Soon</small></div>
-      <div>🏆<b>Leaderboard</b><small>Coming Soon</small></div>
-      <div>👤<b>My Profile</b><small>Coming Soon</small></div>
-      <div>📚<b>Study Mode</b><small>Coming Soon</small></div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ADMIN LOGIN -->
-
-<section class="panel admin-login" id="adminLogin" hidden>
-
-  <h2>🔐 JARVIS IQ ADMIN LOGIN</h2>
-
-  <label>Admin Email</label>
-
-  <input
-    type="email"
-    id="adminEmail"
-    placeholder="Enter admin email"
-    autocomplete="username"
-  >
-
-  <label>Password</label>
-
-  <input
-    type="password"
-    id="adminPassword"
-    placeholder="Enter password"
-    autocomplete="current-password"
-  >
+<label>Password</label>
+<input type="password" id="adminPassword"
+placeholder="Enter password" autocomplete="current-password">
 
   <button class="primary" onclick="adminLogin()">
     LOGIN AS ADMIN →
-  </button>
-
-  <button class="secondary" onclick="closeAdminLogin()">
+  </button>  <button class="secondary" onclick="closeAdminLogin()">
     CANCEL
+  </button>  <p id="adminMessage"></p>
+</section><!-- ADMIN DASHBOARD --><section class="admin-dashboard" id="adminDashboard" hidden>  <div class="dashboard-heading">
+    <div>
+      <p class="tag">PREM X JARVIS</p>
+      <h2>⚡ CONTROL CENTER</h2>
+      <small>SUPER ADMIN PANEL</small>
+    </div><button class="logout-btn" onclick="adminLogout()">
+  LOGOUT
+</button>
+
+  </div>  <nav class="admin-nav">
+    <button class="active" onclick="adminShowTab('overview', this)">
+      📊 Overview
+    </button><button onclick="adminShowTab('questions', this)">
+  📝 Questions
+</button>
+
+<button onclick="adminShowTab('students', this)">
+  👥 Students
+</button>
+
+<button onclick="adminShowTab('results', this)">
+  📈 Results
+</button>
+
+<button onclick="adminShowTab('security', this)">
+  🔐 Security
+</button>
+
+  </nav>  <div class="dashboard-content"><div id="adminOverview">
+  <h3>📊 Dashboard Overview</h3>
+
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <strong id="adminTotalQuestions">—</strong>
+      <small>Total Questions</small>
+    </div>
+
+    <div class="dashboard-card">
+      <strong id="adminTotalStudents">—</strong>
+      <small>Total Students</small>
+    </div>
+
+    <div class="dashboard-card">
+      <strong id="adminTotalResults">—</strong>
+      <small>Quiz Results</small>
+    </div>
+  </div>
+
+  <p class="dashboard-note">
+    Live database statistics will appear here after dashboard integration.
+  </p>
+</div>
+
+<div id="adminQuestions" hidden>
+  <h3>📝 Question Manager</h3>
+
+  <label>Class</label>
+  <select id="qClass">
+    <option value="6">Class 6</option>
+    <option value="7">Class 7</option>
+    <option value="8">Class 8</option>
+    <option value="9">Class 9</option>
+    <option value="10" selected>Class 10</option>
+    <option value="11">Class 11</option>
+    <option value="12">Class 12</option>
+  </select>
+
+  <label>Subject</label>
+  <input id="qSubject" placeholder="Mathematics">
+
+  <label>Chapter</label>
+  <input id="qChapter" placeholder="Chapter name">
+
+  <label>Difficulty</label>
+  <select id="qDifficulty">
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
+    <option>VVI</option>
+  </select>
+
+  <label>Question</label>
+  <textarea id="qText" rows="3"
+    placeholder="Write your question"></textarea>
+
+  <label>Options (one per line)</label>
+  <textarea id="qOptions" rows="4"
+    placeholder="Option 1&#10;Option 2&#10;Option 3&#10;Option 4"></textarea>
+
+  <label>Correct Option Number (1–4)</label>
+  <input id="qAnswer" type="number" min="1" max="4">
+
+  <label>Hint</label>
+  <input id="qHint" placeholder="Question hint">
+
+  <label>Explanation</label>
+  <textarea id="qExplanation" rows="3"
+    placeholder="Explain the answer"></textarea>
+
+  <button class="primary" onclick="saveAdminQuestion()">
+    ➕ ADD QUESTION
   </button>
 
-  <p id="adminMessage"></p>
+  <div id="questionManagerList"></div>
+</div>
 
-</section>
+<div id="adminStudents" hidden>
+  <h3>👥 Registered Students</h3>
+  <div id="studentsList">Loading students will be enabled next.</div>
+</div>
 
-<footer>
+<div id="adminResults" hidden>
+  <h3>📈 Student Results</h3>
+  <div id="resultsList">Read-only results will be enabled next.</div>
+  <p class="dashboard-note">
+    Student results are view-only. No edit or delete actions.
+  </p>
+</div>
+
+<div id="adminSecurity" hidden>
+  <h3>🔐 Admin Security</h3>
+  <p>Account: Super Admin</p>
+  <p>Authentication: Supabase Auth</p>
+  <p>Authorization: Database admin_roles</p>
+  <p>Dashboard access: Restricted</p>
+  <p class="dashboard-note">
+    Never share your password, Secret Key or service_role key.
+  </p>
+</div>
+
+  </div>
+</section><footer>
   <h3>PREM X JARVIS</h3>
   <p>Founder & Developer: Prem Patel</p>
   <p>Made with ❤️ in India</p>
-
   <a href="mailto:premkumar2008pp@gmail.com">
     Contact Developer
   </a>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
-<script src="admin.js"></script>
-
-</body>
+</footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="script.js"></script><script src="admin.js"></script></body>
 </html>
