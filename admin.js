@@ -7,7 +7,7 @@ const SUPABASE_URL =
 "https://ftbtsnylhyaskftmqtre.supabase.co";
 
 // अपनी पूरी Publishable Key यहाँ डालो
-const SUPABASE_KEY = "sb_publishable_WlOXFSWJ2tSJ_Q2D5WiVog_Uprgo-Dm-qiKwsGz4jJHLVPpQ_m75FM9MJ";
+const SUPABASE_KEY = "sb_publishable_D__I3-qiKwsGz4jJHLVPpQ_m75FM9MJ-Dm-qiKwsGz4jJHLVPpQ_m75FM9MJ";
 
 // Check Supabase library
 if (!window.supabase) {
