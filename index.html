@@ -7,6 +7,7 @@
   <title>JARVIS IQ | Learn & Win</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
@@ -22,13 +23,15 @@
     <span>🔥 <b id="streak">1</b></span>
     <span>⚡ <b id="xp">0</b> XP</span>
   </div>
-  
-  <button class="admin-btn" onclick="openAdminLogin()">
+
+  <button class="admin-btn"
+    onclick="document.getElementById('adminLogin').hidden = false">
     🔐 ADMIN
   </button>
 </header>
 
 <main>
+
   <section class="welcome">
     <p class="tag">YOUR LEARNING JOURNEY STARTS HERE</p>
     <h1>WELCOME BACK,<br><span>STUDENT!</span></h1>
@@ -74,6 +77,7 @@
   </section>
 
   <section class="quiz panel" id="quiz" hidden>
+
     <div class="quiz-top">
       <span id="questionNumber">Question 1</span>
       <span class="timer">⏱ <b id="timer">30</b>s</span>
@@ -95,9 +99,11 @@
 
     <p id="feedback"></p>
 
-    <button class="primary" id="nextBtn" onclick="nextQuestion()" hidden>
+    <button class="primary" id="nextBtn"
+      onclick="nextQuestion()" hidden>
       NEXT QUESTION →
     </button>
+
   </section>
 
   <section class="panel">
@@ -131,13 +137,17 @@
       <div>📚<b>Study Mode</b><small>Coming Soon</small></div>
     </div>
   </section>
+
 </main>
 
 <!-- ADMIN LOGIN -->
+
 <section class="panel admin-login" id="adminLogin" hidden>
+
   <h2>🔐 JARVIS IQ ADMIN LOGIN</h2>
 
   <label>Admin Email</label>
+
   <input
     type="email"
     id="adminEmail"
@@ -146,6 +156,7 @@
   >
 
   <label>Password</label>
+
   <input
     type="password"
     id="adminPassword"
@@ -162,6 +173,7 @@
   </button>
 
   <p id="adminMessage"></p>
+
 </section>
 
 <footer>
@@ -176,7 +188,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
-  <script src="admin.js"></script>
+<script src="admin.js"></script>
 
 </body>
 </html>
