@@ -17,7 +17,8 @@
       <small>STUDY • PLAY • WIN</small>
     </div>
   </div>
-    <div class="stats">
+
+  <div class="stats">
     <span>🔥 <b id="streak">1</b></span>
     <span>⚡ <b id="xp">0</b> XP</span>
   </div>
@@ -40,8 +41,12 @@
     <label>Class</label>
     <select id="classSelect">
       <option value="">Select Class</option>
-      <option>6</option><option>7</option><option>8</option>
-      <option>9</option><option>10</option><option>11</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
       <option>12</option>
     </select>
 
@@ -63,7 +68,9 @@
       <option>VVI</option>
     </select>
 
-    <button class="primary" onclick="startQuiz()">START LEARNING →</button>
+    <button class="primary" onclick="startQuiz()">
+      START LEARNING →
+    </button>
   </section>
 
   <section class="quiz panel" id="quiz" hidden>
@@ -87,6 +94,7 @@
     </div>
 
     <p id="feedback"></p>
+
     <button class="primary" id="nextBtn" onclick="nextQuestion()" hidden>
       NEXT QUESTION →
     </button>
@@ -94,15 +102,28 @@
 
   <section class="panel">
     <h2>🏆 Your Progress</h2>
+
     <div class="progress-cards">
-      <div><strong id="total">0</strong><small>Questions</small></div>
-      <div><strong id="correct">0</strong><small>Correct</small></div>
-      <div><strong id="accuracy">0%</strong><small>Accuracy</small></div>
+      <div>
+        <strong id="total">0</strong>
+        <small>Questions</small>
+      </div>
+
+      <div>
+        <strong id="correct">0</strong>
+        <small>Correct</small>
+      </div>
+
+      <div>
+        <strong id="accuracy">0%</strong>
+        <small>Accuracy</small>
+      </div>
     </div>
   </section>
 
   <section class="panel features">
     <h2>Explore JARVIS IQ</h2>
+
     <div class="feature-grid">
       <div>⚔️<b>Battle Mode</b><small>Coming Soon</small></div>
       <div>🏆<b>Leaderboard</b><small>Coming Soon</small></div>
@@ -112,15 +133,49 @@
   </section>
 </main>
 
+<!-- ADMIN LOGIN -->
+<section class="panel admin-login" id="adminLogin" hidden>
+  <h2>🔐 JARVIS IQ ADMIN LOGIN</h2>
+
+  <label>Admin Email</label>
+  <input
+    type="email"
+    id="adminEmail"
+    placeholder="Enter admin email"
+    autocomplete="username"
+  >
+
+  <label>Password</label>
+  <input
+    type="password"
+    id="adminPassword"
+    placeholder="Enter password"
+    autocomplete="current-password"
+  >
+
+  <button class="primary" onclick="adminLogin()">
+    LOGIN AS ADMIN →
+  </button>
+
+  <button class="secondary" onclick="closeAdminLogin()">
+    CANCEL
+  </button>
+
+  <p id="adminMessage"></p>
+</section>
+
 <footer>
   <h3>PREM X JARVIS</h3>
   <p>Founder & Developer: Prem Patel</p>
   <p>Made with ❤️ in India</p>
+
   <a href="mailto:premkumar2008pp@gmail.com">
     Contact Developer
   </a>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
