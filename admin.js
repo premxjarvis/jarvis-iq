@@ -7,7 +7,7 @@ const SUPABASE_URL =
 "https://ftbtsnylhyaskftmqtre.supabase.co";
 
 // IMPORTANT: Use your complete sb_publishable_ key.
-const SUPABASE_KEY = "PASTE_YOUR_COMPLETE_PUBLISHABLE_KEY";
+const SUPABASE_KEY = "sb_publishable_D__I3-qiKwsGz4jJHLVPpQ_m75FM9MJ";
 
 
 // ==========================================
