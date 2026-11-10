@@ -1,79 +1,97 @@
 // ======================================
-// JARVIS IQ - SECURE ADMIN AUTHENTICATION
+// JARVIS IQ - ADMIN AUTHENTICATION
 // ======================================
 
-const SUPABASE_URL = "https://ftbtsnylhyaskftmqtre.supabase.co";
+// Supabase Project URL
+const SUPABASE_URL =
+"https://ftbtsnylhyaskftmqtre.supabase.co";
 
-// अपनी पूरी Publishable Key यहाँ डालना।
+// अपनी पूरी Publishable Key यहाँ डालो
 const SUPABASE_KEY = "sb_publishable_D__I3-qiKwsGz4jJHLVPpQ_m75FM9MJ";
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+// Check Supabase library
+if (!window.supabase) {
+alert("Supabase library failed to load. Please refresh.");
+throw new Error("Supabase library not loaded");
+}
+
+// Check configuration
+if (
+!SUPABASE_KEY.startsWith("sb_publishable_") ||
+SUPABASE_KEY === "PASTE_FULL_SB_PUBLISHABLE_KEY_HERE"
+) {
+console.error("Supabase Publishable Key is missing or incomplete.");
+} else {
+window.supabaseClient = window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
+}
 
 // Open Admin Login
 window.openAdminLogin = function () {
-  document.getElementById("adminLogin").hidden = false;
-  document.getElementById("adminEmail").focus();
+document.getElementById("adminLogin").hidden = false;
+document.getElementById("adminEmail").focus();
 };
 
 // Close Admin Login
 window.closeAdminLogin = function () {
-  document.getElementById("adminLogin").hidden = true;
-  document.getElementById("adminMessage").textContent = "";
+document.getElementById("adminLogin").hidden = true;
+document.getElementById("adminMessage").textContent = "";
 };
 
 // Admin Login
 window.adminLogin = async function () {
-  const email = document.getElementById("adminEmail").value.trim();
-  const password = document.getElementById("adminPassword").value;
-  const message = document.getElementById("adminMessage");
+const email = document.getElementById("adminEmail").value.trim();
+const password = document.getElementById("adminPassword").value;
+const message = document.getElementById("adminMessage");
 
-  if (!email || !password) {
-    message.textContent = "Please enter email and password.";
-    return;
-  }
+if (!email || !password) {
+message.textContent = "Enter your email and password.";
+return;
+}
 
-  message.textContent = "Verifying admin account...";
+if (!window.supabaseClient) {
+message.textContent = "Invalid or missing Supabase Publishable Key.";
+return;
+}
 
-  try {
-    // Authenticate user
-    const { data, error } =
-      await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
+message.textContent = "Verifying admin account...";
 
-    if (error) throw error;
+try {
+// Authenticate user
+const { data, error } =
+await window.supabaseClient.auth.signInWithPassword({
+email: email,
+password: password
+});
 
-    // Verify admin role from database
-    const { data: admin, error: roleError } =
-      await supabaseClient
-        .from("admin_roles")
-        .select("role")
-        .eq("user_id", data.user.id)
-        .eq("role", "super_admin")
-        .maybeSingle();
+if (error) throw error;
 
-    if (roleError) throw roleError;
+// Verify Super Admin role
+const { data: admin, error: roleError } =
+  await window.supabaseClient
+    .from("admin_roles")
+    .select("role")
+    .eq("user_id", data.user.id)
+    .eq("role", "super_admin")
+    .maybeSingle();
 
-    if (!admin) {
-      await supabaseClient.auth.signOut();
-      message.textContent = "Access denied: You are not an admin.";
-      return;
-    }
+if (roleError) throw roleError;
 
-    message.textContent = "✅ Admin verified successfully!";
+if (!admin) {
+  await window.supabaseClient.auth.signOut();
+  message.textContent = "Access denied: Super Admin only.";
+  return;
+}
 
-    document.getElementById("adminPassword").value = "";
+message.textContent = "SUCCESS: Super Admin verified!";
+document.getElementById("adminPassword").value = "";
 
-    alert("Welcome, JARVIS IQ Super Admin!");
+alert("Welcome, JARVIS IQ Super Admin!");
 
-    // Dashboard will be connected in the next step.
-
-  } catch (error) {
-    console.error("Admin login error:", error);
-    message.textContent = error.message || "Login failed.";
-  }
+} catch (error) {
+console.error("Admin Login Error:", error);
+message.textContent = error.message || "Login failed.";
+}
 };
